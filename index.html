@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İyi Ki Doğdun Anneciğim! 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --rose:#e8475f;--gold:#d4a053;--cream:#fdf6ee;--blush:#f9e4e4;
+  --deep:#2a1b3d;--petal:#f7c5cc;--leaf:#6b8f71;
+  --purple:#b44ddf;--hotpink:#ff69b4;--cyan:#00e5ff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--deep);overflow-x:hidden;}
+
+/* ─── SPLASH ─── */
+.splash{
+  position:fixed;inset:0;z-index:99999;
+  background:linear-gradient(135deg,#2a1b3d 0%,#4a1942 40%,#6b2fa0 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  cursor:pointer;transition:opacity .8s,visibility .8s;
+}
+.splash.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+.splash h1{
+  font-family:'Dancing Script',cursive;font-size:clamp(2.5rem,7vw,5rem);
+  color:#fff;text-align:center;margin-bottom:1rem;
+  text-shadow:0 0 40px rgba(255,105,180,.5);
+}
+.splash .tap{color:var(--petal);font-size:1.1rem;letter-spacing:.1em;animation:pulse2 1.5s infinite;}
+.splash .emoji-rain{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.splash .emoji-rain span{position:absolute;top:-10%;font-size:2rem;animation:emojifall linear infinite;}
+@keyframes emojifall{0%{transform:translateY(0) rotate(0deg);opacity:.8}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
+@keyframes pulse2{0%,100%{opacity:.6}50%{opacity:1}}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#fdf6ee 0%,#f9e4e4 40%,#f7c5cc 100%);
+}
+.hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 20% 80%,rgba(232,71,95,.12) 0%,transparent 50%),
+             radial-gradient(circle at 80% 20%,rgba(212,160,83,.1) 0%,transparent 50%);}
+.hero-content{position:relative;z-index:2;padding:2rem;}
+.hero h1{font-family:'Dancing Script',cursive;font-size:clamp(3rem,8vw,7rem);color:var(--rose);line-height:1.1;
+  text-shadow:2px 4px 20px rgba(232,71,95,.15);animation:fadeUp 1.2s ease-out;}
+.hero .subtitle{font-family:'Playfair Display',serif;font-size:clamp(1rem,2.5vw,1.6rem);color:var(--deep);opacity:.7;
+  margin-top:1rem;letter-spacing:.15em;text-transform:uppercase;animation:fadeUp 1.2s ease-out .3s both;}
+.hero .year{font-family:'Dancing Script',cursive;font-size:clamp(1.2rem,3vw,2rem);color:var(--gold);margin-top:.5rem;animation:fadeUp 1.2s ease-out .5s both;}
+.scroll-hint{position:absolute;bottom:2rem;animation:bounce 2s infinite;color:var(--rose);font-size:2rem;cursor:pointer;z-index:5;}
+
+/* ─── GALLERY ─── */
+.gallery{padding:5rem 2rem;max-width:1000px;margin:0 auto;text-align:center;}
+.gallery h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);color:var(--deep);margin-bottom:1rem;}
+.gallery>p{color:var(--deep);opacity:.6;margin-bottom:3rem;font-size:1.1rem;}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
+.photo-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;background:var(--blush);
+  box-shadow:0 8px 30px rgba(42,27,61,.08);transition:transform .4s,box-shadow .4s;cursor:pointer;}
+.photo-card:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 16px 40px rgba(232,71,95,.15);}
+.photo-card img{width:100%;height:100%;object-fit:cover;}
+.photo-card .caption{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1rem 1rem;
+  background:linear-gradient(transparent,rgba(42,27,61,.7));color:#fff;font-family:'Dancing Script',cursive;font-size:1.3rem;text-align:left;}
+.photo-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--rose);font-size:4rem;}
+.photo-placeholder span{font-size:1rem;color:var(--deep);opacity:.4;margin-top:.5rem;}
+
+/* ─── MESSAGE ─── */
+.message{padding:5rem 2rem;text-align:center;background:linear-gradient(180deg,var(--cream) 0%,#fff 50%,var(--cream) 100%);}
+.message-box{max-width:650px;margin:0 auto;padding:3rem 2rem;border:2px solid var(--petal);border-radius:24px;
+  background:rgba(255,255,255,.7);backdrop-filter:blur(10px);position:relative;}
+.message-box::before{content:'💐';font-size:2.5rem;position:absolute;top:-1.5rem;left:50%;transform:translateX(-50%);background:var(--cream);padding:0 1rem;}
+.message-box h2{font-family:'Dancing Script',cursive;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--rose);margin-bottom:1.5rem;}
+.message-box p{font-size:1.15rem;line-height:1.9;color:var(--deep);opacity:.8;}
+.hashtag{display:inline-block;margin-top:1.5rem;padding:.5rem 1.5rem;
+  background:linear-gradient(135deg,var(--rose),var(--purple));color:#fff;border-radius:50px;
+  font-weight:600;font-size:1.1rem;letter-spacing:.05em;}
+.signature{margin-top:1.5rem;font-family:'Dancing Script',cursive;font-size:1.6rem;color:var(--gold);}
+
+/* ─── CAKE ─── */
+.cake-section{padding:5rem 2rem;text-align:center;background:linear-gradient(180deg,var(--cream),var(--blush));position:relative;overflow:hidden;}
+.cake-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);color:var(--deep);margin-bottom:.5rem;}
+.cake-section .hint{color:var(--rose);margin-bottom:2rem;font-size:.95rem;}
+.cake-wrap{position:relative;display:inline-block;cursor:pointer;}
+.cake{font-size:clamp(6rem,15vw,10rem);transition:transform .3s;user-select:none;}
+.cake-wrap:hover .cake{transform:scale(1.05);}
+.flames{position:absolute;top:-10%;left:50%;transform:translateX(-50%);font-size:2rem;display:flex;gap:.3rem;transition:opacity .5s;}
+.flames span{animation:flicker .4s ease-in-out infinite alternate;}
+.flames span:nth-child(2){animation-delay:.15s;}
+.flames span:nth-child(3){animation-delay:.3s;}
+.blown .flames{opacity:0;}
+.blown .cake{animation:cakeJump .6s ease;}
+
+/* ─── CELEBRATION OVERLAY ─── */
+.celebration{
+  position:fixed;inset:0;z-index:50000;
+  background:linear-gradient(135deg,#2a1b3d 0%,#4a1942 30%,#8b2fc9 60%,#c44dbb 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s;overflow:hidden;
+}
+.celebration.active{opacity:1;visibility:visible;}
+.celeb-content{position:relative;z-index:2;text-align:center;padding:1rem;}
+.celeb-cake{font-size:clamp(7rem,20vw,12rem);animation:cakeBounce 1s ease infinite alternate;
+  filter:drop-shadow(0 0 40px rgba(255,105,180,.6));}
+.celeb-text{font-family:'Dancing Script',cursive;font-size:clamp(2rem,6vw,4.5rem);color:#fff;margin-top:1rem;
+  text-shadow:0 0 30px rgba(255,105,180,.8),0 0 60px rgba(180,77,223,.5);animation:fadeUp 1s ease-out .3s both;}
+.celeb-wish{font-family:'Outfit',sans-serif;font-size:clamp(1rem,2.5vw,1.4rem);color:var(--petal);margin-top:1rem;
+  max-width:500px;line-height:1.7;animation:fadeUp 1s ease-out .6s both;}
+.celeb-hashtag{font-size:1.2rem;color:#fff;margin-top:.8rem;font-weight:600;animation:fadeUp 1s ease-out .8s both;}
+.celeb-close{margin-top:2rem;padding:.8rem 2rem;border:2px solid rgba(255,255,255,.3);background:transparent;
+  color:#fff;border-radius:50px;font-family:'Outfit';font-size:1rem;cursor:pointer;
+  transition:background .3s;animation:fadeUp 1s ease-out 1s both;}
+.celeb-close:hover{background:rgba(255,255,255,.15);}
+.celeb-balloons{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.celeb-balloon{position:absolute;bottom:-20%;font-size:3rem;animation:balloonUp linear forwards;}
+@keyframes balloonUp{0%{transform:translateY(0) rotate(0);opacity:.9}100%{transform:translateY(-120vh) rotate(20deg);opacity:0}}
+@keyframes cakeBounce{from{transform:scale(1) rotate(-2deg)}to{transform:scale(1.08) rotate(2deg)}}
+.celeb-stars{position:absolute;inset:0;pointer-events:none;}
+.celeb-star{position:absolute;font-size:1.5rem;animation:starTwinkle 1.5s ease-in-out infinite;}
+@keyframes starTwinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1.3)}}
+
+/* ─── CONFETTI ─── */
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:60000;}
+.hearts-container{position:fixed;inset:0;pointer-events:none;z-index:1;}
+.floating-heart{position:absolute;bottom:-5%;opacity:0;animation:floatUp linear forwards;font-size:1.5rem;}
+
+#musicBtn{position:fixed;bottom:1.5rem;right:1.5rem;z-index:10000;width:54px;height:54px;border-radius:50%;
+  border:none;background:var(--rose);color:#fff;font-size:1.5rem;cursor:pointer;
+  box-shadow:0 4px 20px rgba(232,71,95,.35);transition:transform .3s,background .3s;}
+#musicBtn:hover{transform:scale(1.1);}
+#musicBtn.playing{animation:btnPulse 1.5s infinite;background:var(--gold);}
+@keyframes btnPulse{0%,100%{box-shadow:0 0 0 0 rgba(212,160,83,.4)}50%{box-shadow:0 0 0 12px rgba(212,160,83,0)}}
+
+footer{padding:2rem;text-align:center;color:var(--deep);opacity:.4;font-size:.85rem;background:var(--blush);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes flicker{from{transform:scale(1) rotate(-5deg)}to{transform:scale(1.2) rotate(5deg)}}
+@keyframes cakeJump{0%{transform:scale(1)}30%{transform:scale(1.15)}60%{transform:scale(.95)}100%{transform:scale(1)}}
+@keyframes floatUp{0%{opacity:0;transform:translateY(0) rotate(0) scale(.5)}10%{opacity:.8}90%{opacity:.6}100%{opacity:0;transform:translateY(-100vh) rotate(360deg) scale(1.2)}}
+
+@media(max-width:600px){.photo-grid{grid-template-columns:1fr 1fr;}.message-box{padding:2rem 1.2rem;}}
+</style>
+</head>
+<body>
+
+<div class="splash" id="splash" onclick="startExperience()">
+  <div class="emoji-rain" id="emojiRain"></div>
+  <h1>🎂<br>Hazır mısın?</h1>
+  <p class="tap">✨ Dokunarak başla ✨</p>
+</div>
+
+<canvas id="confetti"></canvas>
+<div class="hearts-container" id="hearts"></div>
+
+<div class="celebration" id="celebration">
+  <div class="celeb-balloons" id="celebBalloons"></div>
+  <div class="celeb-stars" id="celebStars"></div>
+  <div class="celeb-content">
+    <div class="celeb-cake">🎂</div>
+    <div class="celeb-text">İyi Ki Doğdun<br>Anneciğim! 🎉🎊</div>
+    <p class="celeb-wish">Sevdiklerinle beraber sağlıklı, mutlu, huzurlu, başarılar dolu nice uzun yılların olsun! 🌸✨</p>
+    <div class="celeb-hashtag">#HepBeraberOlsun 💕</div>
+    <button class="celeb-close" onclick="closeCelebration()">💕 Devam Et 💕</button>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>İyi Ki Doğdun<br>Anneciğim!</h1>
+    <p class="subtitle">Dünyanın En Güzel Annesi</p>
+    <p class="year">🌸 7 Nisan 2026 🌸</p>
+  </div>
+  <div class="scroll-hint" onclick="document.querySelector('.gallery').scrollIntoView()">↓</div>
+</section>
+
+<section class="gallery">
+  <h2>Birlikte Güzel Anılarımız</h2>
+  <p>Her anı seninle güzel ❤️</p>
+  <div class="photo-grid">
+    <div class="photo-card">
+      <img src="photos/foto1.jpeg" alt="Annemle">
+      <div class="caption">En güzel anılarımız 💕</div>
+    </div>
+    <div class="photo-card">
+      <img src="photos/foto2.jpeg" alt="Annemle">
+      <div class="caption">Seninle her an güzel 🌸</div>
+    </div>
+    <div class="photo-card">
+      <img src="photos/foto3.jpeg" alt="Annemle">
+      <div class="caption">Canım annem ❤️</div>
+    </div>
+  </div>
+</section>
+
+<section class="message">
+  <div class="message-box">
+    <h2>Sana Birkaç Söz...</h2>
+    <p>
+      Canım anneciğim, bugün senin günün! 🌷<br><br>
+      Sen bu dünyadaki en değerli varlığımsın.
+      Her zaman yanımda olduğun, beni sevgiyle büyüttüğün,
+      en zor günlerimde bile gülümsememi sağladığın için
+      sana ne kadar teşekkür etsem az.<br><br>
+      Sevdiklerinle beraber sağlıklı, mutlu, huzurlu,
+      başarılar dolu nice uzun yılların olsun! 🎉🎊<br><br>
+      İyi ki varsın, iyi ki annemsin. 🎂✨
+    </p>
+    <div class="hashtag">#HepBeraberOlsun 💕</div>
+    <div class="signature">— Seni çok seven Güniş ❤️</div>
+  </div>
+</section>
+
+<section class="cake-section">
+  <h2>Pastanın Mumlarını Üfle! 🎉</h2>
+  <p class="hint">(Pastaya tıkla veya dokun)</p>
+  <div class="cake-wrap" id="cakeWrap" onclick="blowCandles()">
+    <div class="flames" id="flames"><span>🕯️</span><span>🕯️</span><span>🕯️</span></div>
+    <div class="cake">🎂</div>
+  </div>
+</section>
+
+<audio id="bgMusic" loop preload="auto"><source src="music/birthday.mp3" type="audio/mpeg"></audio>
+<button id="musicBtn" onclick="toggleMusic()" aria-label="Müzik">🔊</button>
+<footer>Sevgiyle hazırlandı 💕 #HepBeraberOlsun 2026</footer>
+
+<script>
+/* SPLASH EMOJI RAIN */
+const emojiRain=document.getElementById('emojiRain');
+const splashEmojis=['🎂','🎈','🎁','💖','🌸','✨','🎀','🌷','🎊','🎉','💐','🧁'];
+for(let i=0;i<30;i++){const s=document.createElement('span');s.textContent=splashEmojis[Math.random()*splashEmojis.length|0];
+s.style.left=Math.random()*100+'%';s.style.animationDuration=(4+Math.random()*6)+'s';
+s.style.animationDelay=(Math.random()*4)+'s';s.style.fontSize=(1.2+Math.random()*1.5)+'rem';emojiRain.appendChild(s);}
+
+/* MUSIC */
+const music=document.getElementById('bgMusic'),btn=document.getElementById('musicBtn');
+let playing=false;
+function startExperience(){document.getElementById('splash').classList.add('hidden');
+  music.play().then(()=>{playing=true;btn.classList.add('playing');btn.textContent='🔊';}).catch(()=>{});launchConfetti();}
+function toggleMusic(){if(playing){music.pause();btn.classList.remove('playing');btn.textContent='🎵';}
+  else{music.play();btn.classList.add('playing');btn.textContent='🔊';}playing=!playing;}
+
+/* CONFETTI */
+const canvas=document.getElementById('confetti'),ctx=canvas.getContext('2d');
+let W,H,particles=[];
+function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}resize();addEventListener('resize',resize);
+const colors=['#e8475f','#d4a053','#f7c5cc','#6b8f71','#ff6b8a','#ffd700','#ff85a2','#b44ddf','#00e5ff','#ff69b4'];
+class Particle{constructor(){this.reset(true);}
+  reset(init){this.x=Math.random()*W;this.y=init?Math.random()*-H:Math.random()*-50;
+    this.w=Math.random()*8+4;this.h=Math.random()*4+2;this.color=colors[Math.random()*colors.length|0];
+    this.vy=Math.random()*2+1;this.vx=(Math.random()-.5)*2;this.rot=Math.random()*360;this.rv=Math.random()*6-3;}
+  update(){this.y+=this.vy;this.x+=this.vx;this.rot+=this.rv;this.vx+=Math.sin(this.y*.01)*.1;if(this.y>H+20)this.reset(false);}
+  draw(){ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.rot*Math.PI/180);ctx.fillStyle=this.color;ctx.fillRect(-this.w/2,-this.h/2,this.w,this.h);ctx.restore();}}
+let confettiActive=false,confettiTimer;
+function launchConfetti(){if(!particles.length)for(let i=0;i<150;i++)particles.push(new Particle());
+  else particles.forEach(p=>p.reset(true));confettiActive=true;animateConfetti();
+  clearTimeout(confettiTimer);confettiTimer=setTimeout(()=>{confettiActive=false;ctx.clearRect(0,0,W,H);},8000);}
+function animateConfetti(){if(!confettiActive)return;ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animateConfetti);}
+
+/* HEARTS */
+const heartEmojis=['❤️','🌸','💕','🌷','✨','🌺','💖','🎀'];
+const heartsEl=document.getElementById('hearts');
+function spawnHeart(){const el=document.createElement('div');el.className='floating-heart';
+  el.textContent=heartEmojis[Math.random()*heartEmojis.length|0];el.style.left=Math.random()*100+'%';
+  el.style.animationDuration=(6+Math.random()*6)+'s';el.style.fontSize=(1+Math.random()*1.5)+'rem';
+  heartsEl.appendChild(el);el.addEventListener('animationend',()=>el.remove());}
+setInterval(spawnHeart,800);
+
+/* CELEBRATION */
+const celebEl=document.getElementById('celebration'),celebBalloons=document.getElementById('celebBalloons'),celebStars=document.getElementById('celebStars');
+const balloonEmojis=['🎈','🎈','💖','🌸','⭐','🎁','🧁','🎀','🎈'];
+function showCelebration(){celebEl.classList.add('active');
+  for(let i=0;i<25;i++){setTimeout(()=>{const b=document.createElement('div');b.className='celeb-balloon';
+    b.textContent=balloonEmojis[Math.random()*balloonEmojis.length|0];b.style.left=Math.random()*100+'%';
+    b.style.animationDuration=(3+Math.random()*4)+'s';b.style.animationDelay=(Math.random()*2)+'s';
+    b.style.fontSize=(2+Math.random()*2)+'rem';celebBalloons.appendChild(b);
+    b.addEventListener('animationend',()=>b.remove());},i*120);}
+  for(let i=0;i<15;i++){const s=document.createElement('div');s.className='celeb-star';s.textContent='⭐';
+    s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+    s.style.animationDelay=(Math.random()*2)+'s';s.style.fontSize=(1+Math.random()*1.5)+'rem';celebStars.appendChild(s);}
+  launchConfetti();}
+function closeCelebration(){celebEl.classList.remove('active');celebBalloons.innerHTML='';celebStars.innerHTML='';}
+
+/* CAKE BLOW */
+let blown=false;
+function blowCandles(){if(blown)return;blown=true;document.getElementById('cakeWrap').classList.add('blown');
+  setTimeout(showCelebration,600);for(let i=0;i<20;i++)setTimeout(spawnHeart,i*100);}
+</script>
+</body>
+</html>
